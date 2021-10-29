@@ -1,7 +1,15 @@
-import React from "react"; 
+import React, { useState } from "react"; 
+import SearchBar from "./SearchBar";
 
 const App = () => {
-    return <div>App</div>
+    const [term, setTerm] = useState('')
+
+
+    return (
+        <div>
+            <SearchBar setTerm={setTerm} />
+        </div>
+    )
 }
 
 export default App
