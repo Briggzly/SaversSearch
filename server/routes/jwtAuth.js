@@ -43,13 +43,13 @@ router.post('/login', validInfo, async (req, res) => {
         const user = await pool.query('SELECT * FROM users WHERE user_email = $1', [email]);
 
         if (user.rows.length === 0) {
-            return res.status.length(401).json('Invalid Credential')
+            return res.status(401).json('Email or password incorrect')
         }
 
         const validPassword = await bcrypt.compare(password, user.rows[0].user_password)
 
         if (!validPassword) {
-            return res.status(401).json('Invalid Credential')
+            return res.status(401).json('Email or password incorrect')
         }
 
         const jwtToken = jwtGenerator(user.rows[0].user_id)
@@ -60,5 +60,14 @@ router.post('/login', validInfo, async (req, res) => {
     res.status(500).send("Server error");
     }
 });
+
+router.post('/verify', authorize, (req,res) => {
+  try {
+    res.json(true);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Server error");
+  }
+})
 
 module.exports = router;
