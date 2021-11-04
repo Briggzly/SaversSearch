@@ -1,20 +1,15 @@
-import React, { Fragment, useState} from "react";
+import React, { Fragment, useState } from "react";
 import { Link } from "react-router-dom";
-import {NotificationManager} from 'react-notifications'
-import { BsPersonBoundingBox } from 'react-icons/bs'
-import {TiUserAdd} from 'react-icons/ti'
-import '../css/Login.css'
+import { NotificationManager } from "react-notifications";
+import { BsPersonBoundingBox } from "react-icons/bs";
+import { TiUserAdd } from "react-icons/ti";
+import "../css/Login.css";
 
-
-const Login = ({ setAuth, setRegister }) => {
+const Login = ({ setAuth }) => {
   const [inputs, setInputs] = useState({
     email: "",
     password: "",
   });
-
-  
-    setRegister(false)
-  
 
   const { email, password } = inputs;
 
@@ -52,25 +47,27 @@ const Login = ({ setAuth, setRegister }) => {
 
   return (
     <Fragment>
-      <div className='title'>
-      <h1>Login <BsPersonBoundingBox /> </h1>
+      <div className="title">
+        <h1>
+          Login <BsPersonBoundingBox />{" "}
+        </h1>
       </div>
-      <form className='logForm' onSubmit={onSubmitForm}>
-        <label for='email'>Email</label>
+      <form className="logForm" onSubmit={onSubmitForm}>
+        <label for="email">Email</label>
         <input
           type="email"
           name="email"
-          id='email'
+          id="email"
           placeholder="Email"
           value={email}
           onChange={(e) => onChange(e)}
           required
         />
-        <label for='password'>Password</label>
+        <label for="password">Password</label>
         <input
           type="password"
           name="password"
-          id='password'
+          id="password"
           placeholder="Password"
           value={password}
           onChange={(e) => onChange(e)}
@@ -78,7 +75,9 @@ const Login = ({ setAuth, setRegister }) => {
         />
         <button>Submit</button>
       </form>
-      <Link id='linkToRegister' to="/register">Register <TiUserAdd /> </Link>
+      <Link id="linkToRegister" to="/register">
+        Register <TiUserAdd />{" "}
+      </Link>
     </Fragment>
   );
 };

@@ -28,7 +28,7 @@ const App = () => {
     }
   };
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [isRegistered, setIsRegistered] = useState(false);
+
 
   useEffect(() => {
     checkAuthenticated();
@@ -39,9 +39,7 @@ const App = () => {
     setIsAuthenticated(boolean);
   };
 
-  const setRegister = (boolean) => {
-    setIsRegistered(boolean)
-  }
+  
 
   return (
     <Fragment>
@@ -53,7 +51,7 @@ const App = () => {
               path="/login"
               render={(props) =>
                 !isAuthenticated ? (
-                  <Login {...props} setAuth={setAuth} setRegister={setRegister} />
+                  <Login {...props} setAuth={setAuth} />
                 ) : (
                   <Redirect to="/dashboard" />
                 )
@@ -63,10 +61,10 @@ const App = () => {
               exact
               path="/register"
               render={(props) =>
-                !isRegistered ? (
-                  <Register {...props} setRegister={setRegister} />
+                !isAuthenticated ? (
+                  <Register {...props} setAuth={setAuth}/>
                 ) : (
-                  <Redirect to="/login" />
+                  <Redirect to="/dashboard" />
                 )
               }
             />
@@ -75,7 +73,7 @@ const App = () => {
               path="/dashboard"
               render={(props) =>
                 isAuthenticated ? (
-                  <Dashboard {...props} setAuth={setAuth} setRegister={setRegister} />
+                  <Dashboard {...props} setAuth={setAuth} />
                 ) : (
                   <Redirect to="/login" />
                 )
