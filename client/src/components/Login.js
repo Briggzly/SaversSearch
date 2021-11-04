@@ -1,6 +1,8 @@
 import React, { Fragment, useState } from "react";
 import { Link } from "react-router-dom";
-import { toast } from "react-toastify";
+// import { toast } from "react-toastify";
+import {NotificationManager} from 'react-notifications'
+
 
 const Login = ({ setAuth }) => {
   const [inputs, setInputs] = useState({
@@ -32,10 +34,10 @@ const Login = ({ setAuth }) => {
       if (parseRes.jwtToken) {
         localStorage.setItem("token", parseRes.jwtToken);
         setAuth(true);
-        toast.success("Logged in Successfully");
+        NotificationManager.success("Logged in Successfully");
       } else {
         setAuth(false);
-        toast.error(parseRes);
+        NotificationManager.error(parseRes);
       }
     } catch (err) {
       console.log(err.message);

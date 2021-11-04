@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { toast } from "react-toastify";
+import { NotificationManager } from "react-notifications";
 
 const Dashboard = ({ setAuth }) => {
     const [name, setName] = useState('')
@@ -7,7 +7,7 @@ const Dashboard = ({ setAuth }) => {
     const getProfile = async () => {
         try {
             const res = await fetch("http://localhost:5000/dashboard/", {
-                method: "POST",
+                method: "GET",
                 headers: { jwt_token: localStorage.token }
             })
 
@@ -23,7 +23,7 @@ const Dashboard = ({ setAuth }) => {
         try {
             localStorage.removeItem("token")
             setAuth(false)
-            toast.success('Logout successfully')
+            NotificationManager.success('Logout successful')
         } catch (err) {
             console.error(err.message)
         }

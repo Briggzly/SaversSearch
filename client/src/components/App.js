@@ -8,12 +8,15 @@ import {
 import Dashboard from "./Dashboard";
 import Login from "./Login";
 import Register from "./Register";
+import 'react-notifications/lib/notifications.css';
+import { NotificationContainer } from "react-notifications";
+
 
 const App = () => {
   const checkAuthenticated = async () => {
     try {
       const res = await fetch("http://localhost:5000/auth/verify", {
-        method: "POST",
+        method: "GET",
         headers: { jwt_token: localStorage.token },
       });
 
@@ -24,16 +27,21 @@ const App = () => {
       console.log(err.message);
     }
   };
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isRegistered, setIsRegistered] = useState(false);
 
   useEffect(() => {
     checkAuthenticated();
-  }, []);
+  }, [isAuthenticated]);
 
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   const setAuth = (boolean) => {
     setIsAuthenticated(boolean);
   };
+
+  const setRegister = (boolean) => {
+    setIsRegistered(boolean)
+  }
 
   return (
     <Fragment>
@@ -55,10 +63,10 @@ const App = () => {
               exact
               path="/register"
               render={(props) =>
-                !isAuthenticated ? (
-                  <Register {...props} setAuth={setAuth} />
+                !isRegistered ? (
+                  <Register {...props} setRegister={setRegister} />
                 ) : (
-                  <Redirect to="/dashboard" />
+                  <Redirect to="/login" />
                 )
               }
             />
@@ -76,6 +84,7 @@ const App = () => {
           </Switch>
         </div>
       </Router>
+      <NotificationContainer />
     </Fragment>
   );
 };

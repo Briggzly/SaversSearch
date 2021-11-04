@@ -1,9 +1,9 @@
 import React, { Fragment, useState } from "react";
 import { Link } from "react-router-dom";
-import { toast } from "react-toastify";
+import { NotificationManager } from "react-notifications";
 
 
-const Register = ({setAuth}) => {
+const Register = ({setRegister}) => {
   const [inputs, setInputs] = useState({
     username: "",
     email: "",
@@ -33,11 +33,11 @@ const Register = ({setAuth}) => {
 
       if (parseRes.jwtToken) {
         localStorage.setItem('token', parseRes.jwtToken)
-        setAuth(true);
-        toast.success('Register Successfully')
+        setRegister(true);
+        NotificationManager.success('Register Successful')
       } else {
-        setAuth(false);
-        toast.error(parseRes)
+        setRegister(false);
+        NotificationManager.error(parseRes)
       }
     } catch (err) {
       console.log(err.message);
