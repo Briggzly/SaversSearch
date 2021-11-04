@@ -1,6 +1,9 @@
 import React, { Fragment, useState } from "react";
 import { Link } from "react-router-dom";
 import { NotificationManager } from "react-notifications";
+import '../css/Register.css'
+import { BsPersonBoundingBox } from 'react-icons/bs'
+import {BiLogInCircle} from 'react-icons/bi'
 
 
 const Register = ({setRegister}) => {
@@ -44,28 +47,38 @@ const Register = ({setRegister}) => {
     }
   };
 
+  
+
   return (
     <Fragment>
-      <h1>Register</h1>
-      <form onSubmit={onSubmitForm}>
+      <div className='title'>
+      <h1>Register <BsPersonBoundingBox /></h1>
+      </div>
+      <form className='regForm' onSubmit={onSubmitForm}>
+        <label for="username">Username</label>
         <input
           type="text"
+          id="username"
           name="username"
           placeholder="Username"
           value={username}
           onChange={(e) => onChange(e)}
           required
         />
+        <label for="email">Email</label>
         <input
           type="email"
+          id='email'
           name="email"
           placeholder="Email"
           value={email}
           onChange={(e) => onChange(e)}
           required
         />
+        <label for="password">Password</label>
         <input
           type="password"
+          id='password'
           name="password"
           placeholder="Password"
           value={password}
@@ -74,7 +87,7 @@ const Register = ({setRegister}) => {
         />
         <button>Submit</button>
       </form>
-      <Link to="/login">Login</Link>
+      <Link className='link' to="/login"><BiLogInCircle /> Login</Link>
     </Fragment>
   );
 };

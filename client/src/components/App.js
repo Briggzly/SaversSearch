@@ -53,7 +53,7 @@ const App = () => {
               path="/login"
               render={(props) =>
                 !isAuthenticated ? (
-                  <Login {...props} setAuth={setAuth} />
+                  <Login {...props} setAuth={setAuth} setRegister={setRegister} />
                 ) : (
                   <Redirect to="/dashboard" />
                 )
@@ -75,7 +75,7 @@ const App = () => {
               path="/dashboard"
               render={(props) =>
                 isAuthenticated ? (
-                  <Dashboard {...props} setAuth={setAuth} />
+                  <Dashboard {...props} setAuth={setAuth} setRegister={setRegister} />
                 ) : (
                   <Redirect to="/login" />
                 )

@@ -1,14 +1,20 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useState} from "react";
 import { Link } from "react-router-dom";
-// import { toast } from "react-toastify";
 import {NotificationManager} from 'react-notifications'
+import { BsPersonBoundingBox } from 'react-icons/bs'
+import {TiUserAdd} from 'react-icons/ti'
+import '../css/Login.css'
 
 
-const Login = ({ setAuth }) => {
+const Login = ({ setAuth, setRegister }) => {
   const [inputs, setInputs] = useState({
     email: "",
     password: "",
   });
+
+  
+    setRegister(false)
+  
 
   const { email, password } = inputs;
 
@@ -46,19 +52,25 @@ const Login = ({ setAuth }) => {
 
   return (
     <Fragment>
-      <h1>Login</h1>
-      <form onSubmit={onSubmitForm}>
+      <div className='title'>
+      <h1>Login <BsPersonBoundingBox /> </h1>
+      </div>
+      <form className='logForm' onSubmit={onSubmitForm}>
+        <label for='email'>Email</label>
         <input
           type="email"
           name="email"
+          id='email'
           placeholder="Email"
           value={email}
           onChange={(e) => onChange(e)}
           required
         />
+        <label for='password'>Password</label>
         <input
           type="password"
           name="password"
+          id='password'
           placeholder="Password"
           value={password}
           onChange={(e) => onChange(e)}
@@ -66,7 +78,7 @@ const Login = ({ setAuth }) => {
         />
         <button>Submit</button>
       </form>
-      <Link to="/register">Register Here</Link>
+      <Link id='linkToRegister' to="/register">Register <TiUserAdd /> </Link>
     </Fragment>
   );
 };
