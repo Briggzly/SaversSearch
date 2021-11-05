@@ -12,7 +12,8 @@ import {MdScreenSearchDesktop} from 'react-icons/md'
 const Register = ({ setAuth }) => {
   const validate = Yup.object({
     username: Yup.string()
-      .max(20, "* Username must be 20 characters or less")
+      .max(20, "* Username must be between 2-20 characters")
+      .min(2, '* Username must be between 2-20 characters')
       .required("* Username is required"),
     email: Yup.string()
       .email("* Email is invalid!")
