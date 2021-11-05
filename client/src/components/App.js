@@ -8,9 +8,8 @@ import {
 import Dashboard from "./Dashboard";
 import Login from "./Login";
 import Register from "./Register";
-import 'react-notifications/lib/notifications.css';
+import "react-notifications/lib/notifications.css";
 import { NotificationContainer } from "react-notifications";
-
 
 const App = () => {
   const checkAuthenticated = async () => {
@@ -29,23 +28,22 @@ const App = () => {
   };
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-
   useEffect(() => {
     checkAuthenticated();
   }, [isAuthenticated]);
 
-
   const setAuth = (boolean) => {
     setIsAuthenticated(boolean);
   };
-
-  
 
   return (
     <Fragment>
       <Router>
         <div>
           <Switch>
+            <Route exact path="/">
+              <Redirect to="login" />
+            </Route>
             <Route
               exact
               path="/login"
@@ -62,7 +60,7 @@ const App = () => {
               path="/register"
               render={(props) =>
                 !isAuthenticated ? (
-                  <Register {...props} setAuth={setAuth}/>
+                  <Register {...props} setAuth={setAuth} />
                 ) : (
                   <Redirect to="/dashboard" />
                 )

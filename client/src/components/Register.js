@@ -7,6 +7,7 @@ import { BiLogInCircle } from "react-icons/bi";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import { TextField } from "./TextField";
+import {MdScreenSearchDesktop} from 'react-icons/md'
 
 const Register = ({ setAuth }) => {
   const validate = Yup.object({
@@ -23,6 +24,8 @@ const Register = ({ setAuth }) => {
 
   return (
     <Fragment>
+      <h1 id='logo'>SaversSearch <MdScreenSearchDesktop /></h1>
+      <hr/>
       <Formik
         validationSchema={validate}
         initialValues={{
@@ -84,12 +87,12 @@ const Register = ({ setAuth }) => {
               />
               <TextField
                 label="Password"
-                type="password"
+                type="text"
                 id="password"
                 name="password"
                 placeholder="Password"
               />
-              <button>Submit</button>
+              <button type='submit'>Register</button>
             </Form>
             <Link className="link" to="/login">
               <BiLogInCircle /> Login

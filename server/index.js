@@ -7,6 +7,7 @@ app.use(cors());
 app.use(express.json());
 
 // routes
+app.use('/', require('./routes/jwtAuth'))
 
 app.use("/auth", require("./routes/jwtAuth"));
 

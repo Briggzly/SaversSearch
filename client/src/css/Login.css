@@ -3,7 +3,9 @@
 }
 
 body {
-    background-color: #E6E8E6;
+background: #ECE9E6;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #FFFFFF, #ECE9E6);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #FFFFFF, #ECE9E6);
 }
 
 .title {
@@ -29,14 +31,14 @@ body {
 }
 
 .logForm input:focus {
-    outline-color: #4CAF50;
+    outline-color: #279AF1;
 }
 
 .logForm button {
     border-radius: 5px;
     width: 400px;
     height: 40px;
-    background-color: #4CAF50;
+    background-color: #279AF1;
     color: white;
     border-width: thin;
 }
@@ -56,5 +58,5 @@ body {
 }
 
 #linkToRegister:hover {
-    color: #4CAF50;
+    color: #279AF1;
 }

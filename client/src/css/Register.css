@@ -4,13 +4,22 @@
 }
 
 body {
-  background-color: #e6e8e6;
+background: #ECE9E6;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #FFFFFF, #ECE9E6);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #FFFFFF, #ECE9E6); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+ /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+#logo {
+  margin-left: 20px;
+  color: #279AF1;
 }
 
 .title {
   display: flex;
   justify-content: center;
   align-items: center;
+  color: #279AF1;
 }
 
 .regForm {
@@ -25,19 +34,19 @@ body {
   border-radius: 5px;
   height: 40px;
   width: 400px;
-  background-color: white;
+  background-color: white ;
   border-width: thin;
 }
 
 .regForm input:focus {
-  outline-color: #4caf50;
+  outline-color: #279AF1;
 }
 
 .regForm button {
   border-radius: 5px;
   width: 400px;
   height: 40px;
-  background-color: #4caf50;
+  background-color: #279AF1;
   color: white;
   border-width: thin;
 }
@@ -57,11 +66,12 @@ body {
 }
 
 .link:hover {
-  color: #4caf50;
+  color: #279AF1;
 }
 
 .error-message {
-  color: red;
+  color: #279AF1;
+  font-weight: bold;
 }
 
 label {
