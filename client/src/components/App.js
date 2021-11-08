@@ -10,7 +10,7 @@ import Login from "./Login";
 import Register from "./Register";
 import "react-notifications/lib/notifications.css";
 import { NotificationContainer } from "react-notifications";
-import SearchBar from "./SearchBar";
+
 
 const App = () => {
   const checkAuthenticated = async () => {
@@ -73,17 +73,6 @@ const App = () => {
               render={(props) =>
                 isAuthenticated ? (
                   <Dashboard {...props} setAuth={setAuth} />
-                ) : (
-                  <Redirect to="/login" />
-                )
-              }
-            />
-            <Route
-              exact
-              path="/dashboard"
-              render={(props) =>
-                isAuthenticated ? (
-                  <SearchBar {...props} setAuth={setAuth} />
                 ) : (
                   <Redirect to="/login" />
                 )

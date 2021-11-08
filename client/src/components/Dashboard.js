@@ -39,7 +39,7 @@ const Dashboard = ({ setAuth }) => {
   }, []);
 
   return (
-    <div>
+    <div className='flex-column'>
       <nav className="navbar" >
         <div className="navbar-logo">
           <h1>
@@ -56,7 +56,7 @@ const Dashboard = ({ setAuth }) => {
         </div>
       </nav>
       <div className='searchbar-container'>
-        <SearchBar id='searchbar' setAuth={setAuth} />
+        <SearchBar />
       </div>
     </div>
   );

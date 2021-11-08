@@ -36,6 +36,7 @@ background-color: white;
     width: 400px;
     background-color: white;
     border-width: thin;
+    padding: 0px 10px;
 }
 
 .logForm input:focus {

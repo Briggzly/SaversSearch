@@ -7,7 +7,7 @@ import "../css/Login.css";
 import { Formik, Form } from "formik";
 import { TextField } from "./TextField";
 import * as Yup from "yup";
-import {MdScreenSearchDesktop} from 'react-icons/md'
+import { MdScreenSearchDesktop } from "react-icons/md";
 
 const Login = ({ setAuth }) => {
   const validate = Yup.object({
@@ -21,8 +21,10 @@ const Login = ({ setAuth }) => {
 
   return (
     <Fragment>
-      <div className='logo-container'>
-      <h1 id='logo'>SaversSearch <MdScreenSearchDesktop /> </h1>
+      <div className="logo-container">
+        <h1 id="logo">
+          SaversSearch <MdScreenSearchDesktop />{" "}
+        </h1>
       </div>
       <Formik
         validationSchema={validate}
@@ -79,7 +81,7 @@ const Login = ({ setAuth }) => {
                 id="password"
                 placeholder="Password"
               />
-              <button type='submit'>Login</button>
+              <button type="submit">Login</button>
             </Form>
             <Link id="linkToRegister" to="/register">
               Register <TiUserAdd />{" "}
@@ -87,6 +89,9 @@ const Login = ({ setAuth }) => {
           </div>
         )}
       </Formik>
+      {/* <div>
+        <img src="" alt="Sign up"></img>
+      </div> */}
     </Fragment>
   );
 };
