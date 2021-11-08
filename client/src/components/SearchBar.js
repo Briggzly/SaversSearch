@@ -1,11 +1,13 @@
 import React from "react"; 
 
-const SearchBar = ({ setTerm }) => {
+const SearchBar = ({setAuth}) => {
+    
+
     return (
         <div>
             <form>
-                <input type='text' placeholder='Search Here' onChange={(e) => setTerm(e.target.value)}/>
-                <button>Search</button>
+                <input type='text' placeholder='Search Here' />
+                <button type='submit'>Search</button>
             </form>
         </div>
     )

@@ -21,8 +21,9 @@ const Login = ({ setAuth }) => {
 
   return (
     <Fragment>
+      <div className='logo-container'>
       <h1 id='logo'>SaversSearch <MdScreenSearchDesktop /> </h1>
-      <hr/>
+      </div>
       <Formik
         validationSchema={validate}
         initialValues={{
