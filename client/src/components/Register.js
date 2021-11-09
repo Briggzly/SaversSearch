@@ -69,8 +69,8 @@ const Register = ({ setAuth }) => {
         {(formik) => (
           <div className="flex items-center justify-center">
             <div className="border border-gray-300 rounded max-w-md mt-20 p-8 shadow w-full">
-              <div className="title">
-                <div>Register</div> <BsPersonBoundingBox />
+              <div className="text-xl text-blue-500 flex items-center justify-center mb-4">
+                <div className="mr-2">Register</div> <BsPersonBoundingBox />
               </div>
               <Form className="regForm">
                 <TextField

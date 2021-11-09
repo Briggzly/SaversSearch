@@ -62,7 +62,7 @@ const Login = ({ setAuth }) => {
         {(formik) => (
           <div className="flex items-center justify-center">
             <div className="md:border border-gray-300 rounded mt-20 p-8 md:shadow w-full max-w-md">
-              <div className="title">
+              <div className="text-xl text-blue-500 flex items-center justify-center mb-4">
                 <div className="flex items-center text-xl">
                   <div className="mr-2">Login</div> <BsPersonBoundingBox />{" "}
                 </div>
