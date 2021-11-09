@@ -5,6 +5,7 @@ import "../css/Dashboard.css";
 import { Link } from "react-router-dom";
 import SearchBar from "./SearchBar";
 import Result from "./shared/Result";
+import { AiFillAmazonCircle } from "react-icons/ai";
 
 const Dashboard = ({ setAuth }) => {
   const [name, setName] = useState("");
@@ -23,6 +24,22 @@ const Dashboard = ({ setAuth }) => {
       console.error(err.message);
     }
   };
+
+  function toFloat(currency) {
+    if(!currency) {
+      return 0
+    }
+    return Number(currency.replace(/[^0-9.-]+/g, ""))
+  }
+
+  const renderedResults = items.map((i) => {
+    return <Result key={i.uuid} {...i} />;
+  })
+
+  const filteredResults =  renderedResults.sort((a, b) => toFloat(a.price?.raw) - toFloat(b.price?.raw))
+
+
+
 
   const logout = async (e) => {
     e.preventDefault();
@@ -48,8 +65,8 @@ const Dashboard = ({ setAuth }) => {
         </div>
         <div className="flex items-center gap-4">
           <h3>Welcome, {name}</h3>
-          <div className="flex-col items-center gap-2">
-            <Link to="/dashboard">Wish list</Link>
+          <div className="flex-col items-center">
+            <Link to="/dashboard">WishList</Link>
           </div>
           <button
             onClick={(e) => logout(e)}
@@ -61,10 +78,14 @@ const Dashboard = ({ setAuth }) => {
       </nav>
       <div className="w-full max-w-2xl mx-auto mt-16">
         <SearchBar onSubmit={setItems} />
-        <div className="grid md:grid-cols-2 grid-cols-1 gap-4">
-          {items.map((i) => {
-            return <Result key={i.asin} {...i} />;
-          })}
+        <div>
+          <div className='flex items-center justify-center mb-4 text-xl'>
+            <div>Amazon</div>{" "}
+            <AiFillAmazonCircle className="text-yellow-500 ml-1" />
+          </div>
+          <div className="grid lg:grid-cols-1  gap-4">
+            {filteredResults}
+          </div>
         </div>
       </div>
     </div>

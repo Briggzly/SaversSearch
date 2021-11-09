@@ -2,15 +2,27 @@ import React, { useState } from "react";
 import "../css/Dashboard.css";
 import { AiOutlineSend } from "react-icons/ai";
 import axios from "axios";
+import ClipLoader from "react-spinners/ClipLoader";
+import { css } from "@emotion/react"
 
 const SearchBar = ({ onSubmit }) => {
   const [term, setTerm] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const override = css`
+  display: block;
+  margin: 0 auto;
+`;
+
 
   const onSearchSubmit = async (e) => {
     e.preventDefault();
     e.stopPropagation();
 
     if (term === "") return;
+
+    onSubmit([]);
+    setLoading(true);
 
     const params = {
       api_key: "A68506923CCA420A91D4273D0B7F86D9",
@@ -22,10 +34,12 @@ const SearchBar = ({ onSubmit }) => {
     await axios
       .get("https://api.rainforestapi.com/request", { params })
       .then((res) => {
+        setLoading(false);
         onSubmit(res.data.search_results);
       })
       .catch((err) => {
-        console.log(err);
+        console.log(err)
+        setLoading(false);
       });
   };
 
@@ -44,12 +58,11 @@ const SearchBar = ({ onSubmit }) => {
             className="bg-blue-500 rounded-r h-12 px-4 text-white hover:bg-blue-600"
             type="submit"
           >
-            <AiOutlineSend />
+            {!loading ? <AiOutlineSend /> : <ClipLoader color={'white'} css={override} size={15}  />}
           </button>
         </div>
       </form>
       <br />
-      {/* <ItemsList items={items}  /> */}
     </div>
   );
 };
