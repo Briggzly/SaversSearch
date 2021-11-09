@@ -21,10 +21,10 @@ const Login = ({ setAuth }) => {
 
   return (
     <Fragment>
-      <div className="logo-container">
-        <h1 id="logo">
-          SaversSearch <MdScreenSearchDesktop />{" "}
-        </h1>
+      <div className="p-4 border-b border-gray-300 shadow">
+        <div className="text-blue-500 flex items-center text-xl">
+          <div className="mr-2">SaversSearch</div> <MdScreenSearchDesktop />{" "}
+        </div>
       </div>
       <Formik
         validationSchema={validate}
@@ -60,32 +60,42 @@ const Login = ({ setAuth }) => {
         }}
       >
         {(formik) => (
-          <div>
-            <div className="title">
-              <h1>
-                Login <BsPersonBoundingBox />{" "}
-              </h1>
+          <div className="flex items-center justify-center">
+            <div className="md:border border-gray-300 rounded mt-20 p-8 md:shadow w-full max-w-md">
+              <div className="title">
+                <div className="flex items-center text-xl">
+                  <div className="mr-2">Login</div> <BsPersonBoundingBox />{" "}
+                </div>
+              </div>
+              <Form className="logForm mb-4">
+                <TextField
+                  label="Email"
+                  type="email"
+                  name="email"
+                  id="email"
+                  placeholder="Email"
+                />
+                <TextField
+                  label="Password"
+                  type="password"
+                  name="password"
+                  id="password"
+                  placeholder="Password"
+                />
+                <button
+                  type="submit"
+                  className="bg-blue-500 hover:bg-blue-600 cursor-pointer w-full px-4 py-2 text-white rounded mt-4"
+                >
+                  Login
+                </button>
+              </Form>
+              <Link
+                to="/register"
+                className="text-blue-500 flex items-center justify-end hover:text-blue-600"
+              >
+                <div className="mr-1">Register</div> <TiUserAdd />{" "}
+              </Link>
             </div>
-            <Form className="logForm">
-              <TextField
-                label="Email"
-                type="email"
-                name="email"
-                id="email"
-                placeholder="Email"
-              />
-              <TextField
-                label="Password"
-                type="password"
-                name="password"
-                id="password"
-                placeholder="Password"
-              />
-              <button type="submit">Login</button>
-            </Form>
-            <Link id="linkToRegister" to="/register">
-              Register <TiUserAdd />{" "}
-            </Link>
           </div>
         )}
       </Formik>
