@@ -26,20 +26,19 @@ const Dashboard = ({ setAuth }) => {
   };
 
   function toFloat(currency) {
-    if(!currency) {
-      return 0
+    if (!currency) {
+      return 0;
     }
-    return Number(currency.replace(/[^0-9.-]+/g, ""))
+    return Number(currency.replace(/[^0-9.-]+/g, ""));
   }
 
-  const renderedResults = items.map((i) => {
+  const filteredResults = items.sort(
+    (a, b) => toFloat(a.price?.raw) - toFloat(b.price?.raw)
+  );
+
+  const renderedResults = filteredResults.map((i) => {
     return <Result key={i.uuid} {...i} />;
-  })
-
-  const filteredResults =  renderedResults.sort((a, b) => toFloat(a.price?.raw) - toFloat(b.price?.raw))
-
-
-
+  });
 
   const logout = async (e) => {
     e.preventDefault();
@@ -79,13 +78,11 @@ const Dashboard = ({ setAuth }) => {
       <div className="w-full max-w-2xl mx-auto mt-16">
         <SearchBar onSubmit={setItems} />
         <div>
-          <div className='flex items-center justify-center mb-4 text-xl'>
+          <div className="flex items-center justify-center mb-4 text-xl">
             <div>Amazon</div>{" "}
             <AiFillAmazonCircle className="text-yellow-500 ml-1" />
           </div>
-          <div className="grid lg:grid-cols-1  gap-4">
-            {filteredResults}
-          </div>
+          <div className="grid lg:grid-cols-1  gap-4">{renderedResults}</div>
         </div>
       </div>
     </div>
