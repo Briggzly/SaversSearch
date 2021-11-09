@@ -34,7 +34,7 @@ const Dashboard = ({ setAuth }) => {
 
   const filteredResults = items.sort(
     (a, b) => toFloat(a.price?.raw) - toFloat(b.price?.raw)
-  );
+  ).filter(item => item.price)
 
   const renderedResults = filteredResults.map((i) => {
     return <Result key={i.uuid} {...i} />;
