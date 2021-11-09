@@ -4,19 +4,19 @@
 }
 
 body {
-background-color: white;
+  background-color: white;
 }
 
 #logo {
   margin-left: 20px;
-  color: #279AF1;
+  color: #279af1;
 }
 
 .title {
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #279AF1;
+  color: #279af1;
 }
 
 .regForm {
@@ -27,26 +27,16 @@ background-color: white;
 }
 
 .regForm input {
-  margin-bottom: 25px;
   border-radius: 5px;
   height: 40px;
-  width: 400px;
-  background-color: white ;
+  width: 100%;
+  background-color: white;
   border-width: thin;
   padding: 0px 10px;
 }
 
 .regForm input:focus {
-  outline-color: #279AF1;
-}
-
-.regForm button {
-  border-radius: 5px;
-  width: 400px;
-  height: 40px;
-  background-color: #279AF1;
-  color: white;
-  border-width: thin;
+  outline-color: #279af1;
 }
 
 .regForm button:hover {
@@ -64,12 +54,11 @@ background-color: white;
 }
 
 .link:hover {
-  color: #279AF1;
+  color: #279af1;
 }
 
 .error-message {
-  color: #279AF1;
-  font-weight: bold;
+  @apply text-sm top-0 text-red-400 mt-1;
 }
 
 label {

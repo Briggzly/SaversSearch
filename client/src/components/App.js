@@ -10,7 +10,7 @@ import Login from "./Login";
 import Register from "./Register";
 import "react-notifications/lib/notifications.css";
 import { NotificationContainer } from "react-notifications";
-
+import "../css/index.css";
 
 const App = () => {
   const checkAuthenticated = async () => {
