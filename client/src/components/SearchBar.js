@@ -3,17 +3,16 @@ import "../css/Dashboard.css";
 import { AiOutlineSend } from "react-icons/ai";
 import axios from "axios";
 import ClipLoader from "react-spinners/ClipLoader";
-import { css } from "@emotion/react"
+import { css } from "@emotion/react";
 
-const SearchBar = ({ onSubmit }) => {
+const SearchBar = ({ onSubmit, onWSubmit }) => {
   const [term, setTerm] = useState("");
   const [loading, setLoading] = useState(false);
 
   const override = css`
-  display: block;
-  margin: 0 auto;
-`;
-
+    display: block;
+    margin: 0 auto;
+  `;
 
   const onSearchSubmit = async (e) => {
     e.preventDefault();
@@ -22,10 +21,11 @@ const SearchBar = ({ onSubmit }) => {
     if (term === "") return;
 
     onSubmit([]);
+    onWSubmit([]);
     setLoading(true);
 
     const params = {
-      api_key: "A68506923CCA420A91D4273D0B7F86D9",
+      api_key: "D8830C41B5D84A129B9073EA623E512B",
       type: "search",
       amazon_domain: "amazon.com",
       search_term: term,
@@ -34,11 +34,26 @@ const SearchBar = ({ onSubmit }) => {
     await axios
       .get("https://api.rainforestapi.com/request", { params })
       .then((res) => {
-        setLoading(false);
         onSubmit(res.data.search_results);
       })
       .catch((err) => {
-        console.log(err)
+        console.log(err);
+      });
+
+    await axios
+      .get(`https://api.bluecartapi.com/request`, {
+        params: {
+          api_key: "C9141AF2EE744FE5B3EC679D880DEF9D",
+          type: "search",
+          search_term: term,
+        },
+      })
+      .then((res) => {
+        setLoading(false);
+        onWSubmit(res.data.search_results);
+      })
+      .catch((err) => {
+        console.log(err);
         setLoading(false);
       });
   };
@@ -58,7 +73,11 @@ const SearchBar = ({ onSubmit }) => {
             className="bg-blue-500 rounded-r h-12 px-4 text-white hover:bg-blue-600"
             type="submit"
           >
-            {!loading ? <AiOutlineSend /> : <ClipLoader color={'white'} css={override} size={15}  />}
+            {!loading ? (
+              <AiOutlineSend />
+            ) : (
+              <ClipLoader color={"white"} css={override} size={15} />
+            )}
           </button>
         </div>
       </form>
