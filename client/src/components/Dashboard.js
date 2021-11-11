@@ -76,10 +76,10 @@ const Dashboard = ({ setAuth }) => {
           <div className="mr-2 text-lg">SaversSearch</div>{" "}
           <MdScreenSearchDesktop className="text-lg" />{" "}
         </div>
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-4 text-gray-600">
           <h3>Welcome, {name}</h3>
-          <div className="flex-col items-center">
-            <Link to="/dashboard">WishList</Link>
+          <div className="flex-col items-center hover:text-blue-600 ">
+            <Link to="dashboard/wishlist">WishList</Link>
           </div>
           <button
             onClick={(e) => logout(e)}
@@ -91,15 +91,15 @@ const Dashboard = ({ setAuth }) => {
       </nav>
       <div className="flex-col justify-center items-center w-full mx-auto mt-16">
         <SearchBar onSubmit={setItems} onWSubmit={setWItems} />
-        <div className="flex justify-center gap-10">
-          <div className= "max-w-md">
+        <div className="flex justify-center gap-12">
+          <div className= "max-w-md w-full">
             <div className="flex items-center w-full justify-center mb-4 text-xl">
               <div>Amazon</div>{" "}
               <AiFillAmazonCircle className="text-yellow-500 ml-1" />
             </div>
-            <div className="grid grid-cols-1 w-full gap-4">{renderedResults}</div>
+            <div className="grid grid-cols-1 w-full gap-4">{renderedResults} </div>
           </div>
-          <div className= "max-w-md">
+          <div className= "max-w-md w-full">
             <div className="flex items-center w-full justify-center mb-4 text-xl">
               <div>Walmart</div>{" "}
               <BiLoader className="text-yellow-500 ml-1" />

@@ -8,6 +8,7 @@ import {
 import Dashboard from "./Dashboard";
 import Login from "./Login";
 import Register from "./Register";
+import WishList from "./Wishlist";
 import "react-notifications/lib/notifications.css";
 import { NotificationContainer } from "react-notifications";
 import "../css/index.css";
@@ -73,6 +74,17 @@ const App = () => {
               render={(props) =>
                 isAuthenticated ? (
                   <Dashboard {...props} setAuth={setAuth} />
+                ) : (
+                  <Redirect to="/login" />
+                )
+              }
+            />
+            <Route
+              exact
+              path="/dashboard/wishlist"
+              render={(props) =>
+                isAuthenticated ? (
+                  <WishList {...props} />
                 ) : (
                   <Redirect to="/login" />
                 )

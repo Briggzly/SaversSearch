@@ -103,10 +103,10 @@ const Register = ({ setAuth }) => {
                 </button>
               </Form>
               <Link
-                className="text-blue-500 flex items-center justify-end"
+                className="text-blue-500 flex items-center justify-end hover:text-blue-600"
                 to="/login"
               >
-                <BiLogInCircle className="mr-2" /> <div>Login</div>
+                <div>Login</div> <BiLogInCircle className="ml-1" /> 
               </Link>
             </div>
           </div>
