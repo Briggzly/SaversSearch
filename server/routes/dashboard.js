@@ -20,15 +20,30 @@ router.post("/wishlist", async (req, res) => {
   const { title, price } = req.body;
 
   try {
-    const userID = req.user.id
+    const userID = req.user.id;
 
     let newWish = await pool.query(
       "INSERT INTO wishlist (user_id, wish_title, wish_price) VALUES ($1, $2, $3)",
       [userID, title, price]
-    )
+    );
 
-   return res.json(newWish)
+    return res.json(newWish);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Server error");
+  }
+});
 
+router.get("/wishlist", async (req, res) => {
+  try {
+    const userID = req.user.id;
+
+    const wish = await pool.query(
+      "SELECT wish_title, wish_price FROM wishlist WHERE user_id = $1",
+      [userID]
+    );
+
+    res.json(wish.rows);
   } catch (err) {
     console.error(err.message);
     res.status(500).send("Server error");

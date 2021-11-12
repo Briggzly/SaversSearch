@@ -1,7 +1,8 @@
 import React from "react";
 import { SiPrime } from "react-icons/si";
 import { BsBookmarkPlus } from "react-icons/bs";
-import apiRequest from "../../../utils/api";
+import apiRequest from "../../utils/api";
+import { NotificationManager } from "react-notifications";
 
 export default function SearchResult({ image, title, price, is_prime, link }) {
   const bookmarkItem = async () => {
@@ -9,10 +10,12 @@ export default function SearchResult({ image, title, price, is_prime, link }) {
         await apiRequest("/dashboard/wishlist", {
          body: JSON.stringify({
            title: title,
-           price: price
+           price: price.value
          }),
          method: "post"
        });
+
+       NotificationManager.success("Item added to Wishlist")
 
     } catch (err) {
       console.error(err.message);
