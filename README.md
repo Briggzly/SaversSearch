@@ -11,7 +11,7 @@ prices and show the user the best price.
 
 * User Login/Register
 * Searchbar and display data
-* Compare prices
+* Filter prices low to high
 
 ## Future Features
 
