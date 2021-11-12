@@ -1,18 +1,17 @@
 import React from "react";
 import {BsBookmarkPlus} from 'react-icons/bs'
-import axios from "axios";
+import apiRequest from "../../../utils/api";
 
-export default function SearchResult({ product, offers, userID }) {
+export default function SearchResult({ product, offers }) {
 
-  const bookmarkItem = () => {
-    console.log(userID)
+  const bookmarkItem = async () => {
     try {
-        axios.post("http://localhost:5000/dashboard/wishlist", {
-         body: {
-           user_id: userID,
+        await apiRequest("/dashboard/wishlist", {
+         body: JSON.stringify({
            title: product.title,
            price: offers.primary.price
-         }
+         }),
+         method: "post"
        });
 
     } catch (err) {

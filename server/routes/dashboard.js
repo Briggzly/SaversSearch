@@ -5,7 +5,7 @@ const pool = require("../db");
 router.get("/", authorize, async (req, res) => {
   try {
     const user = await pool.query(
-      "SELECT user_name user_id FROM users WHERE user_id = $1",
+      "SELECT user_name FROM users WHERE user_id = $1",
       [req.user.id]
     );
 
@@ -20,14 +20,11 @@ router.post("/wishlist", async (req, res) => {
   const { title, price } = req.body;
 
   try {
-    const user = await pool.query(
-      "SELECT user_id FROM users WHERE user_id = $1",
-      [req.user.id]
-    )
+    const userID = req.user.id
 
     let newWish = await pool.query(
       "INSERT INTO wishlist (user_id, wish_title, wish_price) VALUES ($1, $2, $3)",
-      [user.id, title, price]
+      [userID, title, price]
     )
 
    return res.json(newWish)

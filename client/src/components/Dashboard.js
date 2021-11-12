@@ -8,6 +8,7 @@ import AResult from "./shared/Result/AResults";
 import WResult from "./shared/Result/WResults";
 import { AiFillAmazonCircle } from "react-icons/ai";
 import { BiLoader } from "react-icons/bi";
+import apiRequest from "../utils/api";
 
 const Dashboard = ({ setAuth }) => {
   const [name, setName] = useState("");
@@ -16,9 +17,8 @@ const Dashboard = ({ setAuth }) => {
 
   const getProfile = async () => {
     try {
-      const res = await fetch("http://localhost:5000/dashboard/", {
+      const res = await apiRequest("/dashboard", {
         method: "GET",
-        headers: { jwt_token: localStorage.token },
       });
 
       const parseData = await res.json();

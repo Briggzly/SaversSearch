@@ -1,8 +1,24 @@
 import React from "react";
 import { SiPrime } from "react-icons/si";
 import { BsBookmarkPlus } from "react-icons/bs";
+import apiRequest from "../../../utils/api";
 
 export default function SearchResult({ image, title, price, is_prime, link }) {
+  const bookmarkItem = async () => {
+    try {
+        await apiRequest("/dashboard/wishlist", {
+         body: JSON.stringify({
+           title: title,
+           price: price
+         }),
+         method: "post"
+       });
+
+    } catch (err) {
+      console.error(err.message);
+    }
+  }
+
   return (
     <div className="flex gap-2 border border-gray-400 shadow w-full h-20 items-center p-2 rounded">
       <div className="max-w-xs flex items-center gap-2">
@@ -23,7 +39,7 @@ export default function SearchResult({ image, title, price, is_prime, link }) {
           <div className="mr-1">{price?.raw}</div>
           <div className="text-yellow-500">{is_prime ? <SiPrime /> : null}</div>
         </div>
-        <button className="flex items-center w-full justify-end">
+        <button onClick={bookmarkItem} className="flex items-center w-full justify-end">
           <BsBookmarkPlus />
         </button>
       </div>

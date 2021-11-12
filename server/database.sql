@@ -9,7 +9,7 @@ CREATE TABLE users(
 );
 
 CREATE TABLE wishlist(
-    wish_id int PRIMARY KEY UNIQUE NOT NULL,
+    wish_id SERIAL PRIMARY KEY UNIQUE NOT NULL,
     user_id int NOT NULL,
     wish_title VARCHAR(255) NOT NULL,
     wish_price FLOAT NOT NULL,
@@ -17,4 +17,3 @@ CREATE TABLE wishlist(
 );
 
 INSERT INTO users (user_name, user_email, user_password) VALUES ('Kyson', 'kyson4@gmail.com', 'howdy123');
-INSERT INTO wishlist (wish_title, wish_price) VALUES ($1, $2), [title, price]
