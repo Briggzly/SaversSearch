@@ -17,14 +17,14 @@ router.get("/", authorize, async (req, res) => {
 });
 
 router.post("/wishlist", async (req, res) => {
-  const { title, price } = req.body;
+  const { title, price, link } = req.body;
 
   try {
     const userID = req.user.id;
 
     let newWish = await pool.query(
-      "INSERT INTO wishlist (user_id, wish_title, wish_price) VALUES ($1, $2, $3)",
-      [userID, title, price]
+      "INSERT INTO wishlist (user_id, wish_title, wish_price, wish_link) VALUES ($1, $2, $3, $4)",
+      [userID, title, price, link]
     );
 
     return res.json(newWish);
@@ -39,7 +39,7 @@ router.get("/wishlist", async (req, res) => {
     const userID = req.user.id;
 
     const wish = await pool.query(
-      "SELECT wish_title, wish_price FROM wishlist WHERE user_id = $1",
+      "SELECT wish_title, wish_price, wish_link FROM wishlist WHERE user_id = $1",
       [userID]
     );
 

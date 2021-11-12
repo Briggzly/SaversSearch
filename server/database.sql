@@ -13,6 +13,7 @@ CREATE TABLE wishlist(
     user_id int NOT NULL,
     wish_title VARCHAR(255) NOT NULL,
     wish_price FLOAT NOT NULL,
+    wish_link VARCHAR(2048) NOT NULL,
     FOREIGN KEY (user_id) REFERENCES users(user_id)
 );
 

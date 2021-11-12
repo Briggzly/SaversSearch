@@ -10,6 +10,7 @@ export default function SearchResult({ product, offers }) {
         body: JSON.stringify({
           title: product.title,
           price: offers.primary.price,
+          link: product.link
         }),
         method: "post",
       });
