@@ -8,7 +8,7 @@ const path = require("path")
 app.use(cors());
 app.use(express.json());
 
-app.use(express.static(path.resolve(__dirname, '../build')))
+app.use(express.static(path.resolve(__dirname, '../client/build')))
 
 // routes
 app.use('/', require('./routes/jwtAuth'))
@@ -20,7 +20,7 @@ app.use(authorize)
 app.use("/dashboard", require("./routes/dashboard"));
 
 app.get('/*', function (req, res) {
-  res.sendFile(path.join(__dirname, '../build', 'index.html'))
+  res.sendFile(path.join(__dirname, '../client/build', 'index.html'))
 })
 
 
