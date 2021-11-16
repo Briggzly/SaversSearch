@@ -1,6 +1,7 @@
 {
   "name": "saverssearch",
   "version": "0.1.0",
+  "main": "../server/index.js",
   "private": true,
   "dependencies": {
     "@craco/craco": "^6.4.0",
@@ -20,7 +21,7 @@
     "yup": "^0.32.11"
   },
   "scripts": {
-    "start": "craco start",
+    "start": "node ../server/index.js && craco build",
     "build": "craco build",
     "test": "craco test",
     "eject": "react-scripts eject"
