@@ -42,7 +42,7 @@ const Register = ({ setAuth }) => {
             let { username, email, password } = values;
 
             const response = await fetch(
-              "http://localhost:5000/auth/register",
+              `${process.env.REACT_APP_API_BASE_URI}/auth/register`,
               {
                 method: "POST",
                 headers: {
@@ -106,7 +106,7 @@ const Register = ({ setAuth }) => {
                 className="text-blue-500 flex items-center justify-end hover:text-blue-600"
                 to="/login"
               >
-                <div>Login</div> <BiLogInCircle className="ml-1" /> 
+                <div>Login</div> <BiLogInCircle className="ml-1" />
               </Link>
             </div>
           </div>
