@@ -10,7 +10,9 @@ export default function SearchResult({ product, offers }) {
         body: JSON.stringify({
           title: product.title,
           price: offers.primary.price,
-          link: product.link
+          link: product.link,
+          prime: null,
+          amazon: false
         }),
         method: "post",
       });
@@ -37,14 +39,14 @@ export default function SearchResult({ product, offers }) {
             href={product.link}
             target="_blank"
             rel="noreferrer"
-            className="hover:text-blue-600"
+            className=" transition hover:text-blue-600"
           >
             {product.title}
           </a>
         </div>
       </div>
       <div className="w-full">
-        <div className="flex w-full items-center justify-end text-lg mb-4">
+        <div className="flex w-full items-center justify-end text-lg mb-4 cursor-default">
           <div>${offers.primary.price}</div>
         </div>
         <button

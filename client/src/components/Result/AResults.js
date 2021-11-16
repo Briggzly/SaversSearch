@@ -10,7 +10,10 @@ export default function SearchResult({ image, title, price, is_prime, link }) {
         await apiRequest("/dashboard/wishlist", {
          body: JSON.stringify({
            title: title,
-           price: price.value
+           price: price.value,
+           link: link,
+           prime: is_prime,
+           amazon: true
          }),
          method: "post"
        });
@@ -18,7 +21,8 @@ export default function SearchResult({ image, title, price, is_prime, link }) {
        NotificationManager.success("Item added to Wishlist")
 
     } catch (err) {
-      console.error(err.message);
+      console.error(err.message)
+      NotificationManager.error("Couldn't add item to Wishlist");
     }
   }
 
@@ -31,14 +35,14 @@ export default function SearchResult({ image, title, price, is_prime, link }) {
             href={link}
             target="_blank"
             rel="noreferrer"
-            className="hover:text-blue-600"
+            className="transition hover:text-blue-600"
           >
             {title}
           </a>
         </div>
       </div>
       <div className="w-full">
-        <div className="flex items-center w-full mb-5 justify-end text-lg">
+        <div className="flex items-center w-full mb-5 justify-end text-lg cursor-default">
           <div className="mr-1">{price?.raw}</div>
           <div className="text-yellow-500">{is_prime ? <SiPrime /> : null}</div>
         </div>

@@ -17,14 +17,14 @@ router.get("/", authorize, async (req, res) => {
 });
 
 router.post("/wishlist", async (req, res) => {
-  const { title, price, link } = req.body;
+  const { title, price, link, prime, amazon } = req.body;
 
   try {
     const userID = req.user.id;
 
     let newWish = await pool.query(
-      "INSERT INTO wishlist (user_id, wish_title, wish_price, wish_link) VALUES ($1, $2, $3, $4)",
-      [userID, title, price, link]
+      "INSERT INTO wishlist (user_id, wish_title, wish_price, wish_link, wish_prime, wish_a) VALUES ($1, $2, $3, $4, $5, $6)",
+      [userID, title, price, link, prime? prime : null, amazon]
     );
 
     return res.json(newWish);
@@ -39,7 +39,7 @@ router.get("/wishlist", async (req, res) => {
     const userID = req.user.id;
 
     const wish = await pool.query(
-      "SELECT wish_title, wish_price, wish_link FROM wishlist WHERE user_id = $1",
+      "SELECT * FROM wishlist WHERE user_id = $1",
       [userID]
     );
 
@@ -49,5 +49,23 @@ router.get("/wishlist", async (req, res) => {
     res.status(500).send("Server error");
   }
 });
+
+router.delete('/wishlist/:id', async (req, res) => {
+  try {
+    const {id} = req.params
+
+
+    await pool.query(
+      "DELETE FROM wishlist WHERE wish_id = $1",
+      [id]
+    )
+
+    res.status(200).send("Delete Successful")
+
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Server error");
+  }
+})
 
 module.exports = router;

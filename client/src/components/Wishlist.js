@@ -26,20 +26,20 @@ const WishList = () => {
 
   useEffect(() => {
     getWishlist();
-  }, []);
+  }, [wishItem]);
 
   return (
     <div>
       <nav className="flex items-center justify-between px-4 py-2 border-b border-gray-300 shadow h-12 text-sm mb-16">
-        <div className="flex items-center text-blue-500 ">
+        <div className="flex items-center text-blue-500 cursor-default">
           <div className="mr-2 text-lg">SaversSearch</div>{" "}
           <MdScreenSearchDesktop className="text-lg" />{" "}
         </div>
-        <div className="mr-4 text-gray-600 hover:text-blue-600 text-md">
+        <div className="mr-4 transition text-gray-600 hover:text-blue-600 text-md">
           <Link to="/dashboard">Searchbar</Link>
         </div>
       </nav>
-      <div className="text-4xl flex justify-center items-center w-full mb-12">
+      <div className="text-4xl flex justify-center items-center w-full mb-12 cursor-default">
         Wishlist
       </div>
       <div className="flex justify-center">
