@@ -3,10 +3,10 @@ name: Push Container to Heroku
 on:
   push:
     branches:
-      - master
+      - main
 
 jobs:
-  Deploy Server:
+  server:
     defaults:
       run:
         working-directory: server
