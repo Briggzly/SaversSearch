@@ -3,6 +3,7 @@ import { MdScreenSearchDesktop } from "react-icons/md";
 import { Link } from "react-router-dom";
 import apiRequest from "../utils/api";
 import Results from "./WishlistResults/Results";
+import NotificationManager from "react-notifications/lib/NotificationManager";
 
 const WishList = () => {
   const [wishItem, setWishItem] = useState([]);
@@ -20,13 +21,26 @@ const WishList = () => {
     }
   };
 
+  const deleteItem = id => async () => {
+    try {
+      await apiRequest(`/dashboard/wishlist/${id}`, {
+        method: "delete",
+      })
+
+      NotificationManager.success("Item removed from Wishlist")
+      setWishItem(wishItem.filter(i => i.wish_id !== id))
+    } catch (err) {
+      console.error(err.message)
+    }
+  }
+
   const renderedResults = wishItem.map((i) => {
-    return <Results key={i.wish_id} {...i} />;
+    return <Results key={i.wish_id} {...i} deleteItem={deleteItem(i.wish_id)} />;
   });
 
   useEffect(() => {
     getWishlist();
-  }, [wishItem]);
+  }, []);
 
   return (
     <div>

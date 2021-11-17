@@ -3,8 +3,6 @@ import { MdDeleteForever } from "react-icons/md";
 import { SiPrime } from "react-icons/si";
 import { AiFillAmazonCircle } from "react-icons/ai";
 import { BiLoader } from "react-icons/bi";
-import apiRequest from "../../utils/api";
-import NotificationManager from "react-notifications/lib/NotificationManager";
 
 export default function Results({
   wish_title,
@@ -12,20 +10,9 @@ export default function Results({
   wish_link,
   wish_prime,
   wish_a,
-  wish_id
+  deleteItem
 }) {
 
-  const deleteItem = async () => {
-    try {
-      await apiRequest(`/dashboard/wishlist/${wish_id}`, {
-        method: "delete",
-      })
-
-      NotificationManager.success("Item removed from Wishlist")
-    } catch (err) {
-      console.error(err.message)
-    }
-  }
 
   return (
     <div>
