@@ -15,7 +15,7 @@ const pool = new Pool({
   password: DATABASE_PASSWORD,
   port: DATABASE_PORT,
   database: DATABASE_NAME,
-  ssl: process.env.NODE_ENV === "production"
+  ssl: process.env.NODE_ENV === "production" ? {rejectUnauthorized: false} : false
 });
 
 module.exports = pool;
