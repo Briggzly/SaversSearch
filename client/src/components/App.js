@@ -12,6 +12,7 @@ import WishList from "./Wishlist";
 import "react-notifications/lib/notifications.css";
 import { NotificationContainer } from "react-notifications";
 import "../css/index.css";
+require("dotenv").config({ path: './.env' })
 
 const App = () => {
   const checkAuthenticated = async () => {

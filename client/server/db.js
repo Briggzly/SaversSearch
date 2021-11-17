@@ -1,5 +1,5 @@
 const Pool = require("pg").Pool;
-require("dotenv").config();
+require("dotenv").config({ path: './server/.env' });
 
 const {
   DATABASE_HOST,

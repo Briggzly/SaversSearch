@@ -8,6 +8,7 @@ import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import { TextField } from "./TextField";
 import { MdScreenSearchDesktop } from "react-icons/md";
+require("dotenv").config({ path: './.env' })
 
 const Register = ({ setAuth }) => {
   const validate = Yup.object({

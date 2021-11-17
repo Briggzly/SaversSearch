@@ -1,3 +1,5 @@
+require("dotenv").config({ path: './.env' })
+
 export default function apiRequest(path, options = {}) {
   return fetch(process.env.REACT_APP_API_BASE_URI + path, {
     ...options,

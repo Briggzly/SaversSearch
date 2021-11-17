@@ -3,6 +3,7 @@ const app = express();
 const cors = require("cors");
 const authorize = require("./middleware/authorize");
 const path = require("path")
+require("dotenv").config('./server')
 
 // middleware
 app.use(cors());
