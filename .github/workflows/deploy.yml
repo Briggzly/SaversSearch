@@ -9,7 +9,7 @@ jobs:
   server:
     defaults:
       run:
-        working-directory: server
+        working-directory: client/server
 
     runs-on: ubuntu-latest
     steps:
