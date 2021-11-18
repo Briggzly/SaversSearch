@@ -21,16 +21,16 @@ export default function Results({
           <div className="mb-1">
             {" "}
             {wish_a ? (
-              <div className="flex items-center w-full text-md cursor-default">
+              <div className="flex items-center w-full md:text-md text-sm cursor-default">
                 <div>Amazon</div> <AiFillAmazonCircle className="text-yellow-500 ml-1" />
               </div>
             ) : (
-              <div className="flex items-center w-full text-md cursor-default">
+              <div className="flex items-center w-full md:text-md text-sm cursor-default">
                 <div>Walmart</div> <BiLoader className="text-yellow-500 ml-1" />
               </div>
             )}{" "}
           </div>
-          <div className="max-w-sm flex items-center">
+          <div className="max-w-sm md:w-full w-64 flex items-center">
             <div
               title={wish_title}
               className="text-xs truncate overflow-ellipsis"
@@ -47,14 +47,14 @@ export default function Results({
           </div>
         </div>
         <div className="w-full">
-          <div className="text-lg mb-5 flex w-full justify-end items-center cursor-default">
+          <div className="md:text-lg text-md mb-5 flex w-full justify-end items-center cursor-default">
             <div className="mr-1"> ${wish_price} </div>
             <div className="text-yellow-500">
               {" "}
               {wish_prime ? <SiPrime /> : null}{" "}
             </div>
           </div>
-          <button onClick={deleteItem} className="text-red-500 hover:text-red-600 flex justify-end w-full text-lg">
+          <button onClick={deleteItem} className="text-red-500 hover:text-red-600 flex justify-end w-full md:text-lg text-md">
             {" "}
             <MdDeleteForever />{" "}
           </button>

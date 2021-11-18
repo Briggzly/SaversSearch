@@ -71,19 +71,19 @@ const Dashboard = ({ setAuth }) => {
 
   return (
     <div className="flex-col">
-      <nav className="flex items-center justify-between px-4 py-2 border-b border-gray-300 shadow h-12 text-sm">
+      <nav className="flex w-full items-center justify-between px-4 py-2 border-b border-gray-300 shadow h-12 text-sm">
         <div className="flex items-center transition text-blue-500 cursor-default">
-          <div className="mr-2 text-lg">SaversSearch</div>{" "}
-          <MdScreenSearchDesktop className="text-lg" />{" "}
+          <div className="md:mr-2 mr-1 md:text-lg text-sm">SaversSearch</div>{" "}
+          <MdScreenSearchDesktop className="md:text-lg text-md" />{" "}
         </div>
-        <div className="flex items-center gap-4 text-gray-600">
-          <h3 className="cursor-default">Welcome, {name}</h3>
-          <div className="flex-col transition items-center hover:text-blue-600 ">
+        <div className="flex items-center md:gap-4 gap-2 text-gray-600">
+          <div className="cursor-default text-xs md:text-md  ">Welcome, {name}</div>
+          <div className="transition text-xs md:text-md items-center hover:text-blue-600 ">
             <Link to="dashboard/wishlist">WishList</Link>
           </div>
           <button
             onClick={(e) => logout(e)}
-            className="bg-blue-500 transition text-white px-4 py-2 rounded hover:bg-blue-600"
+            className="bg-blue-500 transition text-white md:px-4 md:py-2 px-2 py-1 text-xs md:text-md rounded hover:bg-blue-600"
           >
             Logout
           </button>
@@ -91,15 +91,15 @@ const Dashboard = ({ setAuth }) => {
       </nav>
       <div className="flex-col justify-center items-center w-full mx-auto mt-16">
         <SearchBar onSubmit={setItems} onWSubmit={setWItems} />
-        <div className="flex justify-center gap-12">
-          <div className= "max-w-md w-full">
+        <div className="md:flex justify-center gap-12">
+          <div className= "md:max-w-md px-4 md:px-0 md:w-full mb-6 md:mb-0">
             <div className="flex items-center w-full justify-center mb-4 text-xl cursor-default">
               <div>Amazon</div>{" "}
               <AiFillAmazonCircle className="text-yellow-500 ml-1" />
             </div>
             <div className="grid grid-cols-1 w-full gap-4">{renderedResults} </div>
           </div>
-          <div className= "max-w-md w-full">
+          <div className= "md:max-w-md px-4 md:px-0 md:w-full">
             <div className="flex items-center w-full justify-center mb-4 text-xl cursor-default">
               <div>Walmart</div>{" "}
               <BiLoader className="text-yellow-500 ml-1" />
