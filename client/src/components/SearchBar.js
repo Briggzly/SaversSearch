@@ -25,7 +25,7 @@ const SearchBar = ({ onSubmit, onWSubmit }) => {
     setLoading(true);
 
     const params = {
-      api_key: "23547DF268424CA5BFF49C5B2F808CF7",
+      api_key: "8883156F8E7A4E2A907A8364079A4EF4",
       type: "search",
       amazon_domain: "amazon.com",
       search_term: term,
@@ -43,7 +43,7 @@ const SearchBar = ({ onSubmit, onWSubmit }) => {
     await axios
       .get(`https://api.bluecartapi.com/request`, {
         params: {
-          api_key: "66F88D8B5D164A1FA0460EBDE6A06811",
+          api_key: "0CF56ED576BC4C80B11B88AE7C27F943",
           type: "search",
           search_term: term,
         },
